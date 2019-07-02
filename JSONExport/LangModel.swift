@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LangModel{
+class LangModel {
 
 	var arrayType : String!
 	var basicTypesWithSpecialFetchingNeeds : [String]!
@@ -47,7 +47,7 @@ class LangModel{
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
-	init(fromDictionary dictionary: NSDictionary){
+    init(from dictionary: [String: Any]) {
 		arrayType = dictionary["arrayType"] as? String
 		basicTypesWithSpecialFetchingNeeds = dictionary["basicTypesWithSpecialFetchingNeeds"] as? [String]
         basicTypesWithSpecialFetchingNeedsReplacements = dictionary["basicTypesWithSpecialFetchingNeedsReplacements"] as? [String]
@@ -57,14 +57,14 @@ class LangModel{
         briefDescription = dictionary["briefDescription"] as? String
         
 		constructors = [Constructor]()
-		if let constructorsArray = dictionary["constructors"] as? [NSDictionary]{
-			 for dic in constructorsArray{
-				let value = Constructor(fromDictionary: dic)
+        if let constructorsArray = dictionary["constructors"] as? [String: [String: Any]] {
+			 for dic in constructorsArray {
+				let value = Constructor(from: dic.value)
 				constructors.append(value)
 			}
 		}
-		if let dataTypesData = dictionary["dataTypes"] as? NSDictionary{
-				dataTypes = DataType(fromDictionary: dataTypesData)
+		if let dataTypesData = dictionary["dataTypes"] as? [String: Any] {
+				dataTypes = DataType(from: dataTypesData)
 			}
         importHeaderFile = dictionary["importHeaderFile"] as? String
 		displayLangName = dictionary["displayLangName"] as? String

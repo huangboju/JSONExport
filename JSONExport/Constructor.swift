@@ -23,7 +23,7 @@ class Constructor{
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
-	init(fromDictionary dictionary: NSDictionary){
+    init(from dictionary: [String: Any]){
 		bodyEnd = dictionary["bodyEnd"] as? String
 		bodyStart = dictionary["bodyStart"] as? String
 		comment = dictionary["comment"] as? String

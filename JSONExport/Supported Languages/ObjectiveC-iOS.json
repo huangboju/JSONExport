@@ -159,7 +159,7 @@
   "headerFileData": {
     "modelDefinitionWithParent": "\n@interface <!ModelName!> : <!ParentClass!>\n",
     "modelEnd": "@end",
-    "instanceVarDefinition": "@property (nonatomic, strong) <!VarType!> * <!VarName!>;\n",
+    "instanceVarDefinition": "@property (nonatomic, strong) <!VarType!> *<!VarName!>;\n",
     "utilityMethodSignatures": [
       "-(NSDictionary *)toDictionary;\n"
     ],

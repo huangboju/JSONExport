@@ -21,7 +21,7 @@ class DataType{
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
-	init(fromDictionary dictionary: NSDictionary){
+    init(from dictionary: [String: Any]){
 		boolType = dictionary["boolType"] as? String
 		characterType = dictionary["characterType"] as? String
 		doubleType = dictionary["doubleType"] as? String

@@ -88,21 +88,20 @@ class Property : Equatable{
     /**
     Returns a valid property declaration using the LangModel.instanceVarDefinition value
     */
-    func toString(_ forHeaderFile: Bool = false) -> String
-    {
-        var string : String!
+    func toString(_ forHeaderFile: Bool = false) -> String {
+        var string = ""
+
         if forHeaderFile{
-            if lang.headerFileData.instanceVarWithSpeicalDefinition != nil && lang.headerFileData.typesNeedSpecialDefinition.index(of: type) != nil{
+            if lang.headerFileData.instanceVarWithSpeicalDefinition != nil && lang.headerFileData.typesNeedSpecialDefinition.firstIndex(of: type) != nil {
                 string = lang.headerFileData.instanceVarWithSpeicalDefinition
-            }else{
+            } else {
                 string = lang.headerFileData.instanceVarDefinition
             }
             
-            
-        }else{
-            if lang.instanceVarWithSpeicalDefinition != nil && lang.typesNeedSpecialDefinition.index(of: type) != nil{
+        } else {
+            if lang.instanceVarWithSpeicalDefinition != nil && lang.typesNeedSpecialDefinition.firstIndex(of: type) != nil {
                 string = lang.instanceVarWithSpeicalDefinition
-            }else{
+            } else {
                 string = lang.instanceVarDefinition
             }
         }
@@ -113,19 +112,10 @@ class Property : Equatable{
         return string
     }
     
-    func toConstVar(_ className: String) -> String
-    {
-        var string : String!
-        if lang.constVarDefinition != nil {
-            string = lang.constVarDefinition
-        } else {
-            string = ""
-        }
-        self.constName = "k"+className+nativeName.uppercaseFirstChar()
-        
-        string = string.replacingOccurrences(of: constKeyName, with: constName!)
-        string = string.replacingOccurrences(of: jsonKeyName, with: jsonName)
-        return string
+    func toConstVar(_ className: String) -> String {
+        let string = lang.constVarDefinition ?? ""
+        self.constName = "k" + className + nativeName.uppercaseFirstChar()
+        return string.replacingOccurrences(of: constKeyName, with: constName!).replacingOccurrences(of: jsonKeyName, with: jsonName)
     }
     
     
