@@ -32,7 +32,7 @@
 
 import Foundation
 
-extension String{
+extension String {
     /**
     Very simple method converts the last characters of a string to convert from plural to singular. For example "parties" will be changed to "party" and "stars" will be changed to "star"
     The method does not handle any special cases, like uncountable name i.e "people" will not be converted to "person"

@@ -91,22 +91,22 @@ class LangModel {
 		supportsFirstLineStatement = (dictionary["supportsFirstLineStatement"] as? NSString)?.boolValue
         firstLineHint = dictionary["firstLineHint"] as? String
 		utilityMethods = [UtilityMethod]()
-		if let utilityMethodsArray = dictionary["utilityMethods"] as? [NSDictionary]{
-			 for dic in utilityMethodsArray{
-				let value = UtilityMethod(fromDictionary: dic)
+        if let utilityMethodsArray = dictionary["utilityMethods"] as? [String: [String: Any]] {
+			 for dic in utilityMethodsArray {
+				let value = UtilityMethod(from: dic.value)
 				utilityMethods.append(value)
 			}
 		}
         reservedKeywords = dictionary["reservedKeywords"] as? [String]
 		wordsToRemoveToGetArrayElementsType = dictionary["wordsToRemoveToGetArrayElementsType"] as? [String]
         
-        if let headerFileDataData = dictionary["headerFileData"] as? NSDictionary{
-            headerFileData = HeaderFileData(fromDictionary: headerFileDataData)
+        if let headerFileDataData = dictionary["headerFileData"] as? [String: Any] {
+            headerFileData = HeaderFileData(from: headerFileDataData)
         }
         
-        supportMutualRelationships = (dictionary["supportMutualRelationships"] as? NSString)?.boolValue
-        if let authorDictionary = dictionary["author"] as? NSDictionary{
-            author = Author(fromDictionary: authorDictionary)
+        supportMutualRelationships = dictionary["supportMutualRelationships"] as? Bool
+        if let authorDictionary = dictionary["author"] as? [String: Any] {
+            author = Author(from: authorDictionary)
         }
 	}
 

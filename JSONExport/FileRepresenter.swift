@@ -191,14 +191,14 @@ class FileRepresenter{
         
         fileContent += "//\tModel file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport"
         
-        if let langAuthor = lang.author{
-            fileContent += "\n\n//\tThe \"\(lang.displayLangName!)\" support has been made available by \(langAuthor.name!)"
-            if let email = langAuthor.email{
-                fileContent += "(\(email))"
+        if let langAuthor = lang.author {
+            fileContent += "\n\n//\tThe \"\(lang.displayLangName!)\" support has been made available by \(langAuthor.name)"
+            if !langAuthor.email.isEmpty {
+                fileContent += "(\(langAuthor.email))"
             }
             
-            if let website = langAuthor.website{
-                fileContent += "\n//\tMore about him/her can be found at his/her website: \(website)"
+            if !langAuthor.website.isEmpty {
+                fileContent += "\n//\tMore about him/her can be found at his/her website: \(langAuthor.website)"
             }
             
         }
@@ -407,7 +407,7 @@ class FileRepresenter{
         if lang.genericType == type{
             isBasicType = true
         }else{
-            let basicTypes = lang.dataTypes.toDictionary().allValues as! [String]
+            let basicTypes = lang.dataTypes.toDictionary().values
             
             if basicTypes.firstIndex(of: type) != nil{
                 isBasicType = true

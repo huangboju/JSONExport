@@ -128,7 +128,7 @@ class HeaderFileRepresenter : FileRepresenter{
                 }else if property.isArray{
                     //if it is an array of custom types
                     if(property.elementsType != lang.genericType){
-                        let basicTypes = lang.dataTypes.toDictionary().allValues as! [String]
+                        let basicTypes = lang.dataTypes.toDictionary().values
                         if basicTypes.firstIndex(of: property.elementsType) == nil{
                             fileContent += lang.headerFileData.importForEachCustomType.replacingOccurrences(of: modelName, with: property.elementsType)
                         }

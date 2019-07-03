@@ -8,38 +8,31 @@
 import Foundation
 
 
-class Author : NSObject, NSCoding{
+class Author : NSObject, NSCoding {
     
-    var website : String!
-    var email : String!
-    var name : String!
+    var website = ""
+    var email = ""
+    var name = ""
     
     
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
-    init(fromDictionary dictionary: NSDictionary){
-        website = dictionary["website"] as? String
-        email = dictionary["email"] as? String
-        name = dictionary["name"] as? String
+    init(from dictionary: [String: Any]) {
+        website = dictionary["website"] as? String ?? ""
+        email = dictionary["email"] as? String ?? ""
+        name = dictionary["name"] as? String ?? ""
     }
     
     /**
      * Returns all the available property values in the form of NSDictionary object where the key is the approperiate json key and the value is the value of the corresponding property
      */
-    func toDictionary() -> NSDictionary
-    {
-        let dictionary = NSMutableDictionary()
-        if website != nil{
-            dictionary["website"] = website
-        }
-        if email != nil{
-            dictionary["email"] = email
-        }
-        if name != nil{
-            dictionary["name"] = name
-        }
-        return dictionary
+    func toDictionary() -> [String: String] {
+        var resutl = [String: String]()
+        resutl["website"] = website
+        resutl["email"] = email
+        resutl["name"] = name
+        return resutl
     }
     
     /**
@@ -48,9 +41,9 @@ class Author : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        website = aDecoder.decodeObject(forKey: "website") as? String
-        email = aDecoder.decodeObject(forKey: "email") as? String
-        name = aDecoder.decodeObject(forKey: "name") as? String
+        website = aDecoder.decodeObject(forKey: "website") as? String ?? ""
+        email = aDecoder.decodeObject(forKey: "email") as? String ?? ""
+        name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
         
     }
     
@@ -58,18 +51,10 @@ class Author : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
-    {
-        if website != nil{
-            aCoder.encode(website, forKey: "website")
-        }
-        if email != nil{
-            aCoder.encode(email, forKey: "email")
-        }
-        if name != nil{
-            aCoder.encode(name, forKey: "name")
-        }
-        
+    @objc func encode(with aCoder: NSCoder) {
+        aCoder.encode(website, forKey: "website")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(name, forKey: "name")
     }
     
 }

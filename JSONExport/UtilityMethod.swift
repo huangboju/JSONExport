@@ -24,7 +24,7 @@ class UtilityMethod{
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
-	init(fromDictionary dictionary: NSDictionary){
+    init(from dictionary: [String: Any]) {
 		forEachCustomTypeProperty = dictionary["forEachCustomTypeProperty"] as? String
 		body = dictionary["body"] as? String
 		bodyEnd = dictionary["bodyEnd"] as? String

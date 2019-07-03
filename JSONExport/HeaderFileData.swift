@@ -28,7 +28,7 @@ class HeaderFileData{
     /**
     * Instantiate the instance using the passed dictionary values to set the properties values
     */
-    init(fromDictionary dictionary: NSDictionary){
+    init(from dictionary: [String: Any]){
         constructorSignatures = dictionary["constructorSignatures"] as? [String]
         headerFileExtension = dictionary["headerFileExtension"] as? String
         importForEachCustomType = dictionary["importForEachCustomType"] as? String
